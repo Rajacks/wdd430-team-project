@@ -34,3 +34,40 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+# StudyPal & SkillConnect
+
+## WDD430 Team Project
+
+StudyPal & SkillConnect is a collaborative team project developed for WDD430 – Web Full-Stack Development at BYU-Idaho.
+
+## Team Members
+
+- Taeg Dayley – Team Leader
+- Raymund Antrone
+- Emmanuel Ndogo
+
+## Project Overview
+
+StudyPal & SkillConnect is designed to support students through student registration, course management, student profiles, course-based search, study group management, and student dashboards.
+
+## Technologies
+
+- Next.js
+- TypeScript
+- React
+- Tailwind CSS
+- GitHub
+
+## Development
+
+Clone the repository and install dependencies:
+
+```bash
+git clone https://github.com/Rajacks/wdd430-team-project.git
+cd wdd430-team-project
+npm install
+npm run dev
+```
+
+Open http://localhost:3000 to view the application locally.
