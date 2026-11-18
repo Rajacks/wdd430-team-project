@@ -14,6 +14,7 @@ const items: { label: string; href: string; icon: IconName }[] = [
   { label: "Connections", href: "/connections", icon: "mail" },
   { label: "Notifications", href: "/connections", icon: "bell" },
   { label: "Settings", href: "/profile", icon: "settings" },
+  { label: "Messages", href: "/connections", icon: "mail" },
 ];
 
 export function Sidebar({ open, onNavigate }: { open: boolean; onNavigate: () => void }) {
