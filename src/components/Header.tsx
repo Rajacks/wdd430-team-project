@@ -69,7 +69,7 @@ export function Header({ dashboard = false, onMenuClick }: { dashboard?: boolean
       </nav>
       <div className="landing-actions">
         <Link className="button button-quiet button-small" href="/login">Log In</Link>
-        <Link className="button button-primary button-small" href="/login">Sign Up <Icon name="arrow" size={15} /></Link>
+        <Link className="button button-primary button-small" href="/signup">Sign Up <Icon name="arrow" size={15} /></Link>
       </div>
     </header>
   );
