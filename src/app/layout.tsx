@@ -1,30 +1,23 @@
+
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { DemoSessionProvider } from "@/components/DemoSessionProvider";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const inter = Inter({ variable: "--font-inter", subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "StudyPal & SkillConnect",
   description:
-    "Connect with students, manage courses, and collaborate through study groups.",
+    "Find study groups, connect with classmates, and make your academic journey a little less solo.",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="en" data-scroll-behavior="smooth">
+      <body className={`${inter.variable} h-full antialiased`}>
+        <DemoSessionProvider>{children}</DemoSessionProvider>
+      </body>
     </html>
   );
 }

@@ -1,0 +1,165 @@
+StudyPal API placeholders
+=========================
+
+All endpoints below currently return HTTP 501 with the same JSON shape:
+{
+  "implemented": false,
+  "status": "not_connected",
+  "message": "This API endpoint is not implemented yet.",
+  "method": "<HTTP method>",
+  "endpoint": "<endpoint URL>",
+  "data": null
+}
+No endpoint reads, stores, or processes request data. Listed request and
+response fields describe the future API contract, not current behavior.
+Path parameters use braces in this document to show variable values.
+
+Authentication and registration
+-------------------------------
+POST /api/auth/register
+Purpose: Register a student account.
+Expected request fields: name, email, password, program.
+Expected response fields: student (id, name, email, program), session.
+Placeholder: Yes.
+
+POST /api/auth/login
+Purpose: Authenticate a student.
+Expected request fields: email, password.
+Expected response fields: student (id, name, email, program), session.
+Placeholder: Yes.
+
+POST /api/auth/logout
+Purpose: End the current student session.
+Expected request fields: session token (future authentication mechanism).
+Expected response fields: success, message.
+Placeholder: Yes.
+
+Student profiles and discovery
+------------------------------
+GET /api/students/me
+Purpose: Retrieve the current student's profile.
+Expected request fields: authenticated session.
+Expected response fields: student (id, name, program, bio, courses, statistics).
+Placeholder: Yes.
+
+PATCH /api/students/me
+Purpose: Update the current student's profile.
+Expected request fields: name, program, bio, courseCodes (all optional).
+Expected response fields: student (id, name, program, bio, courses).
+Placeholder: Yes.
+
+GET /api/students
+Purpose: Search for students by course code.
+Expected request fields: query.courseCode, query.page, query.limit (optional).
+Expected response fields: students (id, name, program, courseCodes), total, page.
+Placeholder: Yes.
+
+Courses and enrollment
+----------------------
+GET /api/courses
+Purpose: Retrieve available courses.
+Expected request fields: query (optional course-code or name filter).
+Expected response fields: courses (id, code, name, description).
+Placeholder: Yes.
+
+POST /api/courses/enrollments
+Purpose: Enroll the current student in a course.
+Expected request fields: courseCode.
+Expected response fields: enrollment (id, courseCode, studentId).
+Placeholder: Yes.
+
+DELETE /api/courses/enrollments
+Purpose: Remove the current student's course enrollment.
+Expected request fields: courseCode.
+Expected response fields: success, courseCode.
+Placeholder: Yes.
+
+Study groups and membership
+---------------------------
+GET /api/study-groups
+Purpose: List study groups, optionally filtered by membership or course.
+Expected request fields: query.courseCode, query.membership, query.page (optional).
+Expected response fields: groups (id, name, courseCode, memberCount, activity), total.
+Placeholder: Yes.
+
+POST /api/study-groups
+Purpose: Create a study group.
+Expected request fields: name, courseCode, description.
+Expected response fields: group (id, name, courseCode, memberCount, createdAt).
+Placeholder: Yes.
+
+GET /api/study-groups/{groupId}
+Purpose: Retrieve a study group's details.
+Expected request fields: path.groupId.
+Expected response fields: group (id, name, courseCode, description, memberCount).
+Placeholder: Yes.
+
+PATCH /api/study-groups/{groupId}
+Purpose: Update a study group.
+Expected request fields: path.groupId; name, courseCode, description (optional).
+Expected response fields: group (id, name, courseCode, description).
+Placeholder: Yes.
+
+DELETE /api/study-groups/{groupId}
+Purpose: Delete a study group.
+Expected request fields: path.groupId.
+Expected response fields: success, groupId.
+Placeholder: Yes.
+
+GET /api/study-groups/{groupId}/members
+Purpose: List members of a study group. Opening a group detail page calls this endpoint; while it is a placeholder, the page displays a clearly labeled static sample roster.
+Expected request fields: path.groupId, query.page (optional).
+Expected response fields: members (studentId, name, program, courseCodes), page, total.
+Placeholder: Yes.
+
+POST /api/study-groups/{groupId}/memberships
+Purpose: Join a study group.
+Expected request fields: path.groupId.
+Expected response fields: membership (id, groupId, studentId, joinedAt).
+Placeholder: Yes.
+
+DELETE /api/study-groups/{groupId}/memberships
+Purpose: Leave a study group.
+Expected request fields: path.groupId.
+Expected response fields: success, groupId.
+Placeholder: Yes.
+
+Connections and invitations
+---------------------------
+GET /api/connections
+Purpose: Retrieve the current student's connections and pending invitations.
+Expected request fields: query.status (pending or accepted, optional).
+Expected response fields: connections (id, student, status, createdAt), total.
+Placeholder: Yes.
+
+POST /api/connections
+Purpose: Send a connection invitation.
+Expected request fields: studentId, optional message.
+Expected response fields: invitation (id, studentId, status, createdAt).
+Placeholder: Yes.
+
+PATCH /api/connections/{connectionId}
+Purpose: Accept or decline a connection invitation.
+Expected request fields: path.connectionId, status (accepted or declined).
+Expected response fields: connection (id, status, updatedAt).
+Placeholder: Yes.
+
+DELETE /api/connections/{connectionId}
+Purpose: Remove a connection or cancel an invitation.
+Expected request fields: path.connectionId.
+Expected response fields: success, connectionId.
+Placeholder: Yes.
+
+Notifications
+-------------
+GET /api/notifications
+Purpose: List notifications for the current student.
+Expected request fields: query.unreadOnly, query.page (optional).
+Expected response fields: notifications (id, type, message, read, createdAt), total.
+Placeholder: Yes.
+
+PATCH /api/notifications/{notificationId}
+Purpose: Mark a notification as read or unread.
+Expected request fields: path.notificationId, read.
+Expected response fields: notification (id, read, updatedAt).
+Placeholder: Yes.

@@ -1,0 +1,8 @@
+These are sample credentials for the frontend-only demo login.
+There is no real authentication, backend, or protected data.
+
+Name: Emmanuel Ndogo
+Password: 1
+
+Name: Taeg Dayley
+Password: 1
